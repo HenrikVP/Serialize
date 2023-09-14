@@ -13,14 +13,25 @@
             Data data2 = Io.Load<Data>();
             List<Album>? loa = data2.Albums;
 
-            foreach (Album album in data2.Albums) {
+            foreach (Album album in data2.Albums)
+            {
                 Console.WriteLine($"Album {album.Title}");
                 foreach (var songId in album.SongIds)
                 {
                     Console.WriteLine($"Song : {songId}");
                     foreach (var song in data2.Songs)
                     {
-                        if (song.SongId == songId) Console.WriteLine($"SongTitle: {song.Title}");
+                        if (song.SongId == songId)
+                        {
+                            Console.WriteLine($"SongTitle: {song.Title}");
+                            foreach (var artist in data2.Artists)
+                            {
+                                if (artist.ArtistId == song.ArtistId)
+                                {
+                                    Console.WriteLine($"Artist: {artist.Name}");
+                                }
+                            }
+                        }
                     }
                 }
             }
